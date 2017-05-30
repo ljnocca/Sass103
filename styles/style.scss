@@ -1,0 +1,45 @@
+$width: 250px;
+$lagoon-blue: #62fdca;
+$lagoon-blue: fade-out(#62fdca, 0.5);
+.math {
+  width: $width;
+  text-align: center;
+  background-color: $lagoon-blue;
+  color: red + blue;
+  height: $width/6;
+	line-height: $width/6;
+  border-radius: $width/30;
+}
+
+//**********************************//
+
+
+$list: (orange, purple, teal);
+
+//Add your each-loop here
+@each $item in $list {
+  .#{$item} {
+    background: $item;
+  }
+}
+
+//**********************************//
+
+$total: 10; //Number of .ray divs in our html
+$step: 360deg / $total; //Used to compute the hue based on color-wheel
+
+
+.ray {
+  height: 30px;
+}
+
+//Add your for-loop here:
+
+@for $i from 1 through $total {
+  .ray:nth-child(#{$i}){
+    background: adjust-hue(blue, $i * $step);
+    width: if($i % 2 == 0, 300px, 350px);
+ 		margin-left: if($i % 2 == 0, 0px, 50px);
+  }
+ 
+}
